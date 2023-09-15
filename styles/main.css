@@ -248,3 +248,12 @@ h1 a:last-of-type {
    color: purple;
    text-decoration: none;
 }
+
+.experienceCard {
+   max-width: 40vw;
+   margin-bottom: 40px;
+}
+
+.experienceCardBullets > li {
+   margin-bottom: 10px;
+}

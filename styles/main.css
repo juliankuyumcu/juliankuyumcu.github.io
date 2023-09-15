@@ -218,5 +218,33 @@ h1 a:last-of-type {
    .bioContent {
       font-size: 5vw;
    }
+}
 
+.projectCardContainer {
+   display: flex;
+   width: 80vw;
+   justify-content: space-around;
+   align-items: start;
+}
+
+.projectCard {
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+}
+
+.projectCardImage {
+   max-width: 20vw;
+}
+
+.projectCardDesc {
+   font-size: 20px;
+   text-align: center;
+}
+
+.projectCardLink {
+   font-size: 20px;
+   color: purple;
+   text-decoration: none;
 }

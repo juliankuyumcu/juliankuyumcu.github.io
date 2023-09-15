@@ -80,7 +80,7 @@ html, body {
 
 .gitHubNav {
    position: relative;
-   background-color: rgba(212, 212, 212, 0.5);
+   background-color: rgba(0, 0, 0, 0.5);
    mask-image: url('../res/GitHub-Mark.svg');
    mask-repeat: no-repeat;
    mask-size: contain;
@@ -90,7 +90,7 @@ html, body {
    width: 43px;
    height: 43px;
    margin-top: 1vh;
-   margin-right: 1vw;
+   margin-right: 3vw;
 }
 
 h1 {
@@ -121,7 +121,7 @@ h1 a:hover,.gitHubNav:hover {
 
 h1 a:active,.gitHubNav:active {
    animation-play-state:paused;
-   background-color:rgba(173, 173, 173, 0.5) !important;
+   background-color:rgba(0, 0, 0, 0.7) !important;
    user-select: none;
 }
 

@@ -142,6 +142,7 @@ h1 a:last-of-type {
    flex-shrink: 1;
    height: 100vh;
    margin-top: 15vh;
+   margin-bottom: 30vh;
    flex-direction: column;
    justify-content: start;
 }

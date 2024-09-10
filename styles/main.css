@@ -8,6 +8,7 @@ html, body {
    padding: 0px;
    position: relative;
    font-family: Helvetica;
+   overflow-y: scroll;
 }
 
 .topLeftAccent {
@@ -140,7 +141,6 @@ h1 a:last-of-type {
    position: relative;
    flex-shrink: 1;
    height: 100vh;
-   overflow: hidden;
    flex-direction: column;
    justify-content: center;
 }
@@ -222,6 +222,7 @@ h1 a:last-of-type {
 
 .projectCardContainer {
    display: flex;
+   flex-wrap: wrap;
    width: 80vw;
    justify-content: space-around;
    align-items: start;

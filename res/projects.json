@@ -1,0 +1,42 @@
+[
+    {
+        "question": "Tell me about that poetry site.",
+        "response": {
+            "emotion": {
+                "eye": "happy",
+                "mouth": "smile"
+            },
+            "content": "I'm glad you asked! I want it to be an archive of poems and stories that reflect my understanding of the human experience. You can visit it at allegoriesofmy.love."
+        }
+    },
+    {
+        "question": "An Emergency Response Robot?",
+        "response": {
+            "emotion": {
+                "eye": "angry",
+                "mouth": "smile"
+            },
+            "content": "Cool, right? My team and I restored 'Matilda' using a Raspberry Pi, ESP32s, a WebRTC web app, and more. You can see it on my GitHub."
+        }
+    },
+    {
+        "question": "What have you done with machine learning models?",
+        "response": {
+            "emotion": {
+                "eye": "thinking",
+                "mouth": "frown"
+            },
+            "content": "I compared data augmentation capabilities for Dense Neural Networks vs. Convolutional Neural Networks, for classifying hand poses as ASL characters. I also generally believe AI should be used to enhance the human experience, not replace it."
+        }
+    },
+    {
+        "question": "Where can I see more about those and others you've done?",
+        "response": {
+            "emotion": {
+                "eye": "wink",
+                "mouth": "tongue"
+            },
+            "content": "You can see my projects on my GitHub! Just click the icon to the top-right of the chatbox."
+        }
+    }
+]

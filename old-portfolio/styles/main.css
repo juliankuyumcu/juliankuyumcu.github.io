@@ -1,0 +1,262 @@
+html, body {
+   display: flex;
+   align-items: center;
+   flex-direction: column;
+   height: 100vh;
+   width: 100vw;
+   margin: 0px;
+   padding: 0px;
+   position: relative;
+   font-family: Helvetica;
+   overflow-y: scroll;
+}
+
+.topLeftAccent {
+   position: fixed;
+   z-index: -1;
+   background: url('../res/topleft.svg') left top;
+   background-size: contain;
+   background-repeat: no-repeat;
+   width: 50vw;
+   margin-right: 50vw;
+   height: 10vw;
+}
+
+.topRightAccent {
+   position: fixed;
+   z-index: -1;
+   background: url('../res/topright.svg') right top;
+   background-size: contain;
+   background-repeat: no-repeat;
+   width: 50vw;
+   margin-left: 50vw;
+   height: 10vw;
+}
+
+.bottomLeftAccent {
+   position: fixed;
+   z-index: -1;
+   background: url('../res/bottomleft.svg') left bottom;
+   background-size: contain;
+   background-repeat: no-repeat;
+   width: 50vw;
+   margin-right: 50vw;
+   height: 10vw;
+   bottom: 0;
+}
+
+.bottomRightAccent {
+   position: fixed;
+   z-index: -1;
+   background: url('../res/bottomright.svg') right bottom;
+   background-size: contain;
+   background-repeat: no-repeat;
+   width: 50vw;
+   margin-left: 50vw;
+   height: 10vw;
+   bottom: 0;
+}
+
+@keyframes fadeIn {
+   0% {
+   }
+   100% {
+      background-color:rgba(212, 212, 212, 0.5);
+   }
+}
+
+.navBar {
+   display: flex;
+   position: fixed;
+   z-index: 1;
+   width: 100vw;
+   flex-direction: row;
+   justify-content: space-between;
+   align-items: center;
+}
+
+.selectedNavBar {
+   background-color: rgba(212, 212, 212, 0.5);
+}
+
+.gitHubNav {
+   position: relative;
+   background-color: rgba(0, 0, 0, 0.5);
+   mask-image: url('../res/GitHub-Mark.svg');
+   mask-repeat: no-repeat;
+   mask-size: contain;
+   -webkit-mask-image: url('../res/GitHub-Mark.svg');
+   -webkit-mask-repeat: no-repeat;
+   -webkit-mask-size: contain;
+   width: 43px;
+   height: 43px;
+   margin-top: 1vh;
+   margin-right: 3vw;
+}
+
+h1 {
+   display: inline-flex;
+   margin: 0;
+   margin-top: 1vh;
+   margin-left: 1vw;
+   border-radius: 10px;
+   background-color: rgba(230, 230, 230, 0.5);
+   backdrop-filter: blur(5px);
+   -webkit-backdrop-filter: blur(5px);
+}
+
+h1 a {
+   padding: 2.5% 1em;
+   color: black;
+   text-decoration: none;
+   flex-shrink: 1;
+   font-weight: lighter;
+   font-size: 17px;
+}
+
+h1 a:hover,.gitHubNav:hover {
+   animation: fadeIn 1.0s;
+   animation-fill-mode: forwards;
+   cursor:pointer;
+}
+
+h1 a:active,.gitHubNav:active {
+   animation-play-state:paused;
+   background-color:rgba(0, 0, 0, 0.7) !important;
+   user-select: none;
+}
+
+h1 a:first-of-type {
+   border-top-left-radius: 10px;
+   border-bottom-left-radius: 10px;
+}
+
+h1 a:last-of-type {
+   border-top-right-radius: 10px;
+   border-bottom-right-radius: 10px;
+}
+
+.content {
+   display: flex;
+   position: relative;
+   flex-shrink: 1;
+   height: 100vh;
+   margin-top: 15vh;
+   margin-bottom: 30vh;
+   flex-direction: column;
+   justify-content: start;
+}
+
+.entry {
+   display: inline-flex;
+   align-items: center;
+}
+
+.bio {
+   display: inline-flex;
+   flex-direction: column;
+   justify-content: center;
+   flex-shrink: 1;
+}
+
+.bioTitle {
+   font-size: 15vw;
+   max-width: 50vw;
+   line-height: 95%;
+}
+
+.bioContent {
+   font-size: 2vw;
+}
+
+.selfPortrait {
+   display: inline-flex;
+   flex-shrink: 1;
+   max-width: 42vw;
+}
+
+.shadow {
+   border-radius: 50%;
+   display: inline-block;
+   position: relative;
+}
+.shadow img {
+   border-radius: 50%;
+   display: block;
+   border: 1px solid #fff;
+}
+
+.shadow:after {
+   content: "";
+   display: block;
+   width: 100%;
+   height: 100%;
+   border-radius: 50%;
+   position: absolute;
+   top: 0;
+   left: 0;
+   box-shadow: inset 10px 40px 40px 0px white, 
+      inset -10px -40px 40px 0px white, 
+      inset 20px -10px 40px 0px white, 
+      inset -20px 10px 40px 0px white;
+}
+
+@media screen and (max-device-width: 480px) {
+   .gitHubNav {
+      width: 70px;
+      height: 70px;
+   }
+
+   h1 a {
+      font-size: 30px !important;
+   }
+
+   .topLeftAccent, .topRightAccent, .bottomLeftAccent, .bottomRightAccent {
+      width: 100vw;
+      margin-left: 0;
+      margin-right: 0;
+   }
+
+   .bioContent {
+      font-size: 5vw;
+   }
+}
+
+.projectCardContainer {
+   display: flex;
+   flex-wrap: wrap;
+   width: 80vw;
+   justify-content: space-around;
+   align-items: start;
+}
+
+.projectCard {
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+}
+
+.projectCardImage {
+   max-width: 20vw;
+}
+
+.projectCardDesc {
+   font-size: 20px;
+   text-align: center;
+}
+
+.projectCardLink {
+   font-size: 20px;
+   color: purple;
+   text-decoration: none;
+}
+
+.experienceCard {
+   max-width: 40vw;
+   margin-bottom: 40px;
+}
+
+.experienceCardBullets > li {
+   margin-bottom: 10px;
+}

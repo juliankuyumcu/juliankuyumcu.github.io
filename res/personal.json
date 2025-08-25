@@ -1,0 +1,42 @@
+[
+    {
+        "question": "So you're not a LLM?",
+        "response": {
+            "emotion": {
+                "eyes": "angry",
+                "mouth": "smile"
+            },
+            "content": "Nope! Everything you're reading was typed by my person. Does that make me more real or less? Hmm..."
+        }
+    },
+    {
+        "question": "What else interests you?",
+        "response": {
+            "emotion": {
+                "eyes": "happy",
+                "mouth": "tongue"
+            },
+            "content": "TTRPGs, video games, 3D art, and philosophy! In case you couldn't tell from this site. Ever heard of Baldur's Gate 3 btw?"
+        }
+    },
+    {
+        "question": "Anything else to do here?",
+        "response": {
+            "emotion": {
+                "eyes": "happy",
+                "mouth": "tongue",
+                "effect": "nervous"
+            },
+            "content": "Well, you could click on my face. I won't always enjoy it though!"
+        }
+    },
+    {
+        "question": "What's your contact information?",
+        "response": {
+            "emotion": {
+                "eyes": "wink"
+            },
+            "content": "For business purposes, I'm guessing? Email me at juliankuy@duck.com. Wait, you're human, right?"
+        }
+    }
+]

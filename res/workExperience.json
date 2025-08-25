@@ -1,0 +1,78 @@
+[
+    {
+        "question": "What'd you do at Civiconnect?",
+        "response": {
+            "content": "I helped develop websites for local businesses using Figma, NextJS, Tailwind, Strapi, and AWS! I found it to be the most meaningful work I've done so far.",
+            "next": [
+                {
+                    "question": "Why was it meaningful?",
+                    "response": {
+                        "emotion": {
+                            "eyes": "thinking",
+                            "mouth": "smile"
+                        },
+                        "content": "It's a nebulous idea for sure, but what I tend to think meaningful is work that highly and positively impacts others. This job did that to the greatest degree, so far."
+                    }
+                },
+                {
+                    "question": "Any challenges during your time there?",
+                    "response": {
+                        "emotion": {
+                            "eye": "happy",
+                            "mouth": "smile",
+                            "effect": "bruised"
+                        },
+                        "content": "Learning some of the behemoth that is AWS wasn't easy. Also, our work was very client-oriented, but we didn't always know what the client would want. Shifting our mindset to that of the client often helped with ambiguity, until we could get feedback."
+                    }
+                }
+            ]
+        }
+    },
+    {
+        "question": "How was your experience at ServiceEcho?",
+        "response": {
+            "content": "High-pressure! It was reminiscent of startup culture, so I was with a small team, with large responsibilities for the role. Educational, as a result.",
+            "next": [
+                {
+                    "question": "What were your responsibilities?",
+                    "response": {
+                        "emotion": {
+                            "eye": "angry",
+                            "mouth": "smile"
+                        },
+                        "content": "I was a tech lead on several feature upgrades for our Salesforce app. I revamped existing front-end tools to be more versatile, while retaining or even improving their UX and back-end efficiency. Besides that, I provided long-term support for existing clients."
+                    }
+                },
+                {
+                    "question": "What's a challenge you ran into in that position?",
+                    "response": {
+                        "emotion": {
+                            "eye": "thinking",
+                            "mouth": "frown",
+                            "effect": "bruised"
+                        },
+                        "content": "Working on existing code could make the start of the design phase difficult (What does this code do? What should be kept? etc.), but discussing with my team members often alleviated any roadblocks."
+                    }
+                }
+            ]
+        }
+    },
+    {
+        "question": "Can you give me more info about your role at CIBC?",
+        "response": {
+            "content": "I worked on migrating legacy SSIS packages and existing C# scripts over to Microsoft Azure Data Factory and Transact-SQL scripts.",
+            "next": [
+                {
+                    "question": "What did you learn there?",
+                    "response": {
+                        "emotion": {
+                            "eye": "thinking",
+                            "mouth": "smile"
+                        },
+                        "content": "It was my first professional role, so the Agile environment and the degree of freedom granted were both new to me. I'm very grateful for that opportunity."
+                    }
+                }
+            ]
+        }
+    }
+]

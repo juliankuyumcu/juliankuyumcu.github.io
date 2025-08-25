@@ -1,42 +1,49 @@
 <!DOCTYPE html>
 <html>
-    <!--Hey! Thanks for checking out my site!
-    (And inspecting my elements.)
-
-    Everything here was written by yours truly.
-    Looking to hire? Check out the Contact section.-->
     <head>
         <title>Julian's Portfolio</title>
-        <link rel='stylesheet' href='./styles/main.css'/>
+        <meta name="author" content="Julian Kuyumcu">
+        <meta name="description" content="An interactive portfolio site.">
         <link rel="icon" type="image/png" href="./res/favicon.ico" sizes="32x32" />
+        <link rel="stylesheet" href="./styles/main.css"/>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Tiny5&display=swap" rel="stylesheet">
     </head>
     <body>
-        <div class='topRightAccent'></div>
-        <div class='bottomLeftAccent'></div>
-        <div class='navBar'>
-            <h1>
-                <a class='selectedNavBar'>Home</a>
-                <a href='./projects.html'>Projects</a>
-                <a href='./experience.html'>Experience</a>
-                <a href='./contact.html'>Contact</a>
-            </h1>
-            <a class='gitHubNav' title='My GitHub' href='https://github.com/juliankuyumcu'></a>
-        </div>
-        <div class='content'>
-            <div class='entry'>
-                <div class='bio'>
-                    <div class='bioTitle'>
-                        I'm Julian.
-                    </div>
-                    <div class='bioContent'>
-                        Programmer | Designer | Artist
-                    </div>
+        <main>
+            <div id="portraitContainer">
+                <div id="portrait">
+                    <div id="portraitEyes"></div>
+                    <div id="portraitMouth"></div>
+                    <div id="portraitEffect"></div>
                 </div>
-                <div class="shadow">
-                    <img class='selfPortrait' src='./res/DSCF5881.JPG'></img>
+                <div id="speech">
+                    <div id="answerContainer">
+                        <div id="answer"></div>
+                    </div>
                 </div>
             </div>
-        </div>
-        <script src='scripts/script.js'></script>
+            <div id="questionsContainer">
+                <div id="header">
+                    <p id="questionsTitle">Julian</p>
+                    <a href="https://github.com/juliankuyumcu">
+                        <!-- 
+                        This icon is used under the Creative Commons 4.0 license. 
+                        Author: HackerNoon
+                        Source: https://github.com/hackernoon/pixel-icon-library
+                        License: https://creativecommons.org/licenses/by/4.0/
+                        -->
+                        <img id="github" src="./res/github.svg"/>
+                    </a>
+                </div>
+                
+                <div class="questions">
+                    <ol id="questionList"></ol>
+                </div>
+            </div>
+                
+        </main>
     </body>
+    <script src="./scripts/conversation.js"></script>
 </html>

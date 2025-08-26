@@ -159,6 +159,7 @@ function speechAnimation(response) {
                 clearInterval(currentTextAnimation);
                 currentTextAnimation = null;
                 skipAnimation = false;
+                fastForwardElement.style.display = "none";
             } else {
                 currentTextAnimation = setTimeout(repeat, timing);
             }

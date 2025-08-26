@@ -164,6 +164,19 @@ main {
     display: none;
 }
 
+#fastForward {
+    max-width: 32px;
+    max-height: 32px;
+    position: absolute;
+    bottom: 15%;
+    right: 15%;
+}
+
+#fastForward img {
+    max-width: 40px;
+    max-height: 40px;
+}
+
 #answerContainer {
     padding-top: 120px;
     padding-left: 95px;

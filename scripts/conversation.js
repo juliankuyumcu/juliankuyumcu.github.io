@@ -5,6 +5,7 @@ var listElement = null;
 var portraitElement = null;
 var speechElement = null;
 var answerElement = null;
+var fastForwardElement = null;
 var currentSpeechAnimation1 = null; // start of emotion
 var currentSpeechAnimation2 = null; // start of speech
 var currentTextAnimation = null; // type-in animation
@@ -125,7 +126,6 @@ function speechAnimation(response) {
             }
             answerElement.innerHTML = content;
             
-            if (skipAnimation) console.log("A");
             timing = skipAnimation ? 0 : (70 + (Math.random() * 10 - 5));
 
             /* sliding window on [low, low, med, high, high] depending on emotion */
@@ -134,16 +134,18 @@ function speechAnimation(response) {
                 response.emotion?.eyes === "angry" ? -1 : 
                 0    
             );
-            if (tone == -1)
-                audiolow.play();
-            else if (tone == 0)
-                audiolow.play();
-            else if (tone == 1)
-                audio.play();
-            else if (tone == 2)
-                audiohigh.play();
-            else if (tone == 3)
-                audiohigh.play();
+
+            if (!skipAnimation)
+                if (tone == -1)
+                    audiolow.play();
+                else if (tone == 0)
+                    audiolow.play();
+                else if (tone == 1)
+                    audio.play();
+                else if (tone == 2)
+                    audiohigh.play();
+                else if (tone == 3)
+                    audiohigh.play();
 
             i++;
             if (i >= response.content.length) {
@@ -181,6 +183,7 @@ async function displayResponse(response) {
         }
         portraitElement.classList.add("talking");
         speechElement.style.display = "block";
+        fastForwardElement.style.display = "block";
         answerElement.textContent = "";
 
         speechAnimation(response);
@@ -236,12 +239,13 @@ document.addEventListener("DOMContentLoaded", async function() {
     portraitElement = document.getElementById("portrait");
     speechElement = document.getElementById("speech");
     answerElement = document.getElementById("answer");
+    fastForwardElement = document.getElementById("fastForward");
     audio = new Audio("../res/speak.wav");
     audiolow = new Audio("../res/speak-low.wav");
     audiohigh = new Audio("../res/speak-high.wav");
 
     portraitElement.onclick = () => adHocEmotion(getRandomEmotion());
-    answerElement.onclick = () => {skipAnimation = true};
+    fastForwardElement.onclick = () => {fastForwardElement.style.display = "none"; skipAnimation = true};
 
     current = conversation;
     setQuestions(current, true);

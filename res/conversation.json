@@ -26,7 +26,7 @@
                 "eyes": "thinking",
                 "mouth": "smile"
             },
-            "content": "I've created a poetry site that's very special to me, I've restored an Emergency Response Robot for my university, and I've made some ML models.",
+            "content": "I've created a poetry site that's very special to me, I've restored an Emergency Response Robot for my university, and I've done some ML work.",
             "next": "projects.json"
         }
     },

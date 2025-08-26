@@ -9,6 +9,7 @@ var currentSpeechAnimation1 = null; // start of emotion
 var currentSpeechAnimation2 = null; // start of speech
 var currentTextAnimation = null; // type-in animation
 var currentFaceAnimation = null; // linger of emotion
+var skipAnimation = false;
 var audio = null; // speaking tone
 var audiolow = null; // speaking tone
 var audiohigh = null; // speaking tone
@@ -24,7 +25,7 @@ function goBack() {
 async function getResponse(event, response) {
 
     const target = event.currentTarget;
-    const question = target.children[0].innerText;
+    const question = target.children[0].textContent;
 
     asked.add(question);
     target.classList.add("asked");
@@ -48,15 +49,26 @@ function clearEmotions() {
 }
 
 function clearAnimations() {
-    if (currentSpeechAnimation1) clearTimeout(currentSpeechAnimation1);
-    if (currentSpeechAnimation2) clearTimeout(currentSpeechAnimation2);
-    if (currentTextAnimation) clearInterval(currentTextAnimation);
-    if (currentFaceAnimation) {
-        clearEmotions();
-        clearTimeout(currentFaceAnimation);
+    if (currentSpeechAnimation1) {
+        clearTimeout(currentSpeechAnimation1);
+        currentSpeechAnimation1 = null;
     }
+    if (currentSpeechAnimation2) {
+        clearTimeout(currentSpeechAnimation2);
+        currentSpeechAnimation2 = null;
+    }
+    if (currentTextAnimation) {
+        clearInterval(currentTextAnimation);
+        currentTextAnimation = null;
+    }
+    if (currentFaceAnimation) {
+        clearTimeout(currentFaceAnimation);
+        currentFaceAnimation = null;
+    }
+    clearEmotions();
     portraitElement.classList.remove("talking");
     speechElement.style.display = "none";
+    skipAnimation = false;
 }
 
 function adHocEmotion(emotion) {
@@ -81,18 +93,40 @@ function getRandomEmotion() {
     return emotion;
 }
 
+function getNextLink(content, idx) {
+    while (content[idx] !== '(') idx++;
+    idx++;
+    let link = '';
+    while (content[idx] !== ')') {
+        link += content[idx];
+        idx++;
+    }
+    return [link, idx];
+}
+
 function speechAnimation(response) {
     let timing = 70;
 
     currentSpeechAnimation2 = setTimeout(() => {
         let i = 0;
-        let textContent = answerElement.textContent;
+        let content = answerElement.innerHTML;
+        let link = null;
 
-        currentTextAnimation = setInterval(() => {
-            textContent += response.content[i];
-            answerElement.textContent = textContent;
-
-            timing = 70 + (Math.random() * 10 - 5);
+        function repeat() {
+            if (response.content[i] === '[') {
+                link = getNextLink(response.content, i);
+                content += `<a href="${link[0]}"/>`
+            } else if (response.content[i] == ']') {
+                content += `</a>`
+                i = link[1];
+                link = null;
+            } else {
+                content += response.content[i];
+            }
+            answerElement.innerHTML = content;
+            
+            if (skipAnimation) console.log("A");
+            timing = skipAnimation ? 0 : (70 + (Math.random() * 10 - 5));
 
             /* sliding window on [low, low, med, high, high] depending on emotion */
             const tone = Math.floor(Math.random() * 3) + (
@@ -116,11 +150,19 @@ function speechAnimation(response) {
                 currentFaceAnimation = setTimeout(() => {
                     clearEmotions();
                     clearTimeout(currentFaceAnimation);
+                    currentFaceAnimation = null;
+                    skipAnimation = false;
                 }, 500);
                 portraitElement.classList.remove("talking");
                 clearInterval(currentTextAnimation);
+                currentTextAnimation = null;
+                skipAnimation = false;
+            } else {
+                currentTextAnimation = setTimeout(repeat, timing);
             }
-        }, timing);
+        }
+
+        repeat();
     }, 400);
 }
 
@@ -133,6 +175,10 @@ async function displayResponse(response) {
 
     currentSpeechAnimation1 = setTimeout(() => {
         portraitElement.classList.remove(response.emotion?.mouth);
+        if (!response.content) {
+            clearAnimations();
+            return;
+        }
         portraitElement.classList.add("talking");
         speechElement.style.display = "block";
         answerElement.textContent = "";
@@ -146,7 +192,7 @@ function setQuestions(questions, isRoot) {
 
     const backButton = document.createElement("button");
     backButton.classList.add("questionButton");
-    backButton.innerText = "<";
+    backButton.textContent = "<";
     backButton.onclick = () => goBack();
 
     const backElement = document.createElement("li");
@@ -157,15 +203,15 @@ function setQuestions(questions, isRoot) {
         ...(isRoot ? [] : [backElement]), 
         ...questions.map((question, index) => {
             const questionText = document.createElement("p");
-            questionText.innerText = `${index + 1}. ` + question.question;
+            questionText.textContent = `${index + 1}. ` + question.question;
 
             const forwardButton = document.createElement("p");
             forwardButton.classList.add("forwardButton");
-            forwardButton.innerText = ">";
+            forwardButton.textContent = ">";
 
             const questionButton = document.createElement("button");
             questionButton.classList.add("questionButton");
-            questionButton.classList.add(asked.has(questionText.innerText) ? "asked" : "notAsked");
+            questionButton.classList.add(asked.has(questionText.textContent) ? "asked" : "notAsked");
             questionButton.onclick = (e) => getResponse(e, question.response);
             questionButton.append(questionText);
             if (question.response.next && question.response.next.length > 0)
@@ -195,6 +241,7 @@ document.addEventListener("DOMContentLoaded", async function() {
     audiohigh = new Audio("../res/speak-high.wav");
 
     portraitElement.onclick = () => adHocEmotion(getRandomEmotion());
+    answerElement.onclick = () => {skipAnimation = true};
 
     current = conversation;
     setQuestions(current, true);

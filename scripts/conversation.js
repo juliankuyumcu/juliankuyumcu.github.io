@@ -68,7 +68,7 @@ function clearAnimations() {
     }
     clearEmotions();
     portraitElement.classList.remove("talking");
-    speechElement.style.display = "none";
+    speechElement.classList.remove("visible");
     skipAnimation = false;
 }
 
@@ -183,7 +183,7 @@ async function displayResponse(response) {
             return;
         }
         portraitElement.classList.add("talking");
-        speechElement.style.display = "block";
+        speechElement.classList.add("visible");
         fastForwardElement.style.display = "block";
         answerElement.textContent = "";
 

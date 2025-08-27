@@ -20,6 +20,12 @@
     --tear-offset: -800px;
 }
 
+@media (max-width: 900px) {
+    html {
+        scale: 0.7;
+    }
+}
+
 body {
     width: 100vw;
     height: 100vh;
@@ -40,6 +46,13 @@ main {
     font-weight: 400;
     font-style: normal;
 }
+
+@media (max-width: 900px) {
+    main {
+        margin-top: -20vh;
+    }
+}
+
 
 /* PORTRAIT SETUP */
 
@@ -103,6 +116,16 @@ main {
     }
 }
 
+@media (max-width: 900px) {
+    #portraitContainer {
+        scale: 0.6;
+    }
+
+    #portraitContainer:has(#speech.visible) {
+        translate: -70px 0;
+    }
+}
+
 #portrait.talking #portraitMouth {
     animation: talking 0.5s steps(2) infinite forwards;
 }
@@ -162,6 +185,10 @@ main {
     background-size: cover;
     image-rendering: pixelated;
     display: none;
+}
+
+#speech.visible {
+    display: block;
 }
 
 #fastForward {
@@ -236,6 +263,7 @@ ol {
     min-width: 40vw;
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
     gap: 10px;
     font-size: x-large;
 }
@@ -267,6 +295,12 @@ button:hover {
 
 .question {
     cursor: pointer;
+    width: 100%;
+}
+
+.questionButton p {
+    text-align: left;
+    max-width: 90%;
 }
 
 .questionButton.asked {
